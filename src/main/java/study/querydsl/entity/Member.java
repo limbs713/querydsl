@@ -16,12 +16,12 @@ import lombok.ToString;
 @Entity
 @Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString(of = {"id", "name","age"})
+@ToString(of = {"id", "username","age"})
 public class Member {
     @Id @GeneratedValue
     @Column(name = "member_id")
     private Long id;
-    private String name;
+    private String username;
     private int age;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -37,7 +37,7 @@ public class Member {
     }
 
     public Member(String username, int age, Team team) {
-        this.name = username;
+        this.username = username;
         this.age= age;
         if(team != null){
             changeTeam(team);
